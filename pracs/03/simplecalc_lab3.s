@@ -1,11 +1,10 @@
-# The main program is to perform calculation as per formula: __??
+# The main program is to perform calculation as per formula: x = (a + b) - (c + d)
+#                                                              = (12 + (-2)) -  (13 - 3)
+#                                 Modified Formula for Lab3: x = (g + h) - (i - j + k)
 # Note: A formula is a mathematical expression with variables. For this exercise, you need to declare some variables based on the calculation task.
 # Variable and expression are standard and common terms in programming context. It's assumed you have understood them from learning Programming Fundamentals.
-# places variables __?? ... __?? in registers __?? ... __??
-#                        |                           |
-#             list of variables          list of registers
-#
-#
+# places variables a, b, c, d, x in registers s1, s2, s3, s4, s0
+
   .data
   .globl  message  
 message:  .asciiz "The value of f is: "   # Create an ascii string and label it as "message"
@@ -20,13 +19,19 @@ main:                       # main has to be a global label
 
         # CALCULATING
 
-  addi  $s1, $0, 12         # Store the value 12 in register $s1
-  addi  $s2, $0, -2         # Store the value -2 in register $s2
-  addi  $s3, $0, 13         # Store the value 13 in register $s3
-  addi  $s4, $0, 3          # Store the value 3 in register $s4
-  add   $t0, $s1, $s2       # 12 + (-2)
-  sub   $t1, $s3, $s4       # 13 - 3
-  sub   $s0, $t0, $t1       # 10 - 10
+  # addi  $s1, $0, 12         # a = 12 
+  # addi  $s2, $0, -2         # b = -2
+  # addi  $s3, $0, 13         # c = 13
+  # addi  $s4, $0, 3          # d = 3
+  addi  $s1, $0, 12         # $s1 = g
+  addi  $s2, $0, -2         # $s2 = h
+  addi  $s3, $0, 13         # $s3 = i
+  addi  $s4, $0, 3          # $s4 = j
+  addi  $s5, $0, 4          # $s5 = k
+  add   $t0, $s1, $s2       # $s1 + $s2
+  add   $t1, $s4, $s5       # $s4 + $s5
+  sub   $t1, $s3, $t1       # $s3 - $t0
+  sub   $s0, $t0, $t1       # $t0 - $t1
 
         # PRINTING
         

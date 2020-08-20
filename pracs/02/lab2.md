@@ -16,8 +16,8 @@ that can be loaded by the processor.
 
 ## Workshop Tasks
 
-2. 
-  a) 
+### Question 2
+  __a)__ 
 ```
  s1 = 0 + 12
  s2 = 0 + -2
@@ -29,7 +29,14 @@ that can be loaded by the processor.
  s0 = t0 - t1 # s0 = 10 - 10 = 0
 ```
 
-  b) The program outputs the following:
+This is the equivalant of the following expression:
+```
+x = (12 + (-2)) - (13 - 3)
+x = 10 - 10
+x = 0
+```
+
+  __b)__ The program outputs the following:
 
 ```
 26850099200.00000000
@@ -37,7 +44,7 @@ that can be loaded by the processor.
  ... Thank you :)
 ```
 
-  c) No the results are not identical. The expected output should be:
+  __c)__ No the results are not identical. The expected output should be:
 
 ```
 The value of f is: 0
@@ -48,7 +55,7 @@ Have a nice day :)
 
   Instead there is a very large number that is output. I believe this is happening because the system call code that is loaded on line 23: `li $v0, 1` is the system call code to print out an integer, but the argument passed to the system call instruction is an ASCII string, not an integer. It then prints out an integer value for this string, and continues to execute the instructions until it tries again to print out the data pointed to by the extra label. This time however, the syscall code that was loaded was the print_float code. After printing out the float value for this data, it continues executing the rest of the instructions.
 
-4.
+### Question 4
 ```
 $s7 -> used for saving the return address
 $s1 -> used for storing the value 12
@@ -63,3 +70,5 @@ $a0 -> This register is used 4 times to store the arguments for syscalls. Three 
 $ra -> used for restoring the return address which was stored in $s7.
 $0 -> This register is used when that value 0 is required for an operation.
 ```
+
+All of the registers used are in accordance with the conventions. The $t0 and $t1 registers are used temporarily until they are used to perform the calculations that are then stored in to $s0.
